@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Private Space</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; padding: 20px; }
+        .container { background: #2d2d2d; padding: 20px; border-radius: 15px; max-width: 400px; margin: auto; }
+        button { background: #ff4757; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer; }
+        .counter { font-size: 40px; margin: 10px 0; color: #ff6b81; }
+        .links { margin-top: 20px; }
+        a { color: #1e90ff; text-decoration: none; display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>💞 Our Moments</h2>
+        <div class="counter" id="countDisplay">0</div>
+        <button onclick="addCount()">Add Session</button>
+        <button onclick="resetCount()" style="background:#444; margin-top:10px;">Reset</button>
+
+        <hr style="margin: 20px 0; border: 0.5px solid #444;">
+
+        <div class="links">
+            <h3>🔥 Quick Links</h3>
+            <a href="https://your-private-google-drive-link.com" target="_blank">📸 Our Private Gallery</a>
+            <a href="https://www.google.com" target="_blank">🔞 Special Content (Search)</a>
+        </div>
+    </div>
+
+    <script>
+        // Data Load kora
+        let count = localStorage.getItem('sexCount') || 0;
+        document.getElementById('countDisplay').innerText = count;
+
+        function addCount() {
+            count++;
+            localStorage.setItem('sexCount', count);
+            document.getElementById('countDisplay').innerText = count;
+        }
+
+        function resetCount() {
+            if(confirm("Are you sure?")) {
+                count = 0;
+                localStorage.setItem('sexCount', count);
+                document.getElementById('countDisplay').innerText = count;
+            }
+        }
+    </script>
+</body>
+</html>
