@@ -2,51 +2,147 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <title>Our Private Space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Forbidden Room</title>
     <style>
-        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; padding: 20px; }
-        .container { background: #2d2d2d; padding: 20px; border-radius: 15px; max-width: 400px; margin: auto; }
-        button { background: #ff4757; border: none; padding: 10px 20px; color: white; border-radius: 5px; cursor: pointer; }
-        .counter { font-size: 40px; margin: 10px 0; color: #ff6b81; }
-        .links { margin-top: 20px; }
-        a { color: #1e90ff; text-decoration: none; display: block; margin: 10px 0; }
+        body { 
+            background: #000; color: #ff0033; 
+            font-family: 'Georgia', serif; text-align: center; margin: 0; padding: 10px;
+        }
+        .container {
+            background: linear-gradient(180deg, #1a0000 0%, #000 100%);
+            border: 3px solid #660000; border-radius: 30px;
+            max-width: 500px; margin: auto; padding: 25px 15px;
+            box-shadow: 0 0 40px #ff0000;
+        }
+        h1 { font-size: 32px; text-shadow: 0 0 15px #ff0000; margin-bottom: 5px; }
+        
+        /* Interactive Counter */
+        .stat-box { background: rgba(255, 0, 51, 0.1); border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .counter-val { font-size: 70px; font-weight: bold; color: #fff; text-shadow: 0 0 20px #ff0033; line-height: 1; }
+        
+        /* Intensity Slider */
+        .slider-box { margin: 25px 0; border: 1px solid #440000; padding: 15px; border-radius: 15px; }
+        input[type=range] { width: 100%; accent-color: #ff0033; }
+
+        /* Position Cards with GIFs */
+        .pos-card { 
+            background: #0d0d0d; border: 1px solid #330000; 
+            border-radius: 20px; margin: 25px 0; padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .pos-card img { width: 100%; border-radius: 15px; margin-top: 15px; border: 2px solid #222; }
+        .pos-title { font-size: 22px; font-weight: bold; color: #fff; display: block; }
+        .pos-desc { color: #ff99aa; font-size: 14px; font-style: italic; margin-top: 5px; }
+
+        /* Action Buttons */
+        .main-btn { 
+            background: linear-gradient(45deg, #800000, #ff0033); 
+            border: none; padding: 18px; width: 100%; color: white;
+            font-weight: bold; border-radius: 50px; font-size: 22px; 
+            cursor: pointer; box-shadow: 0 0 20px #ff003366;
+        }
+        .hot-link { 
+            background: #1a1a1a; color: #fff; padding: 12px; 
+            text-decoration: none; border-radius: 10px; display: block; 
+            margin-top: 15px; border: 1px solid #444; font-size: 14px;
+        }
+        
+        /* Secret Task */
+        .task-box { background: #330000; padding: 15px; border-radius: 15px; margin: 20px 0; color: #fff; font-weight: bold; border: 1px dashed #ff0033; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>💞 Our Moments</h2>
-        <div class="counter" id="countDisplay">0</div>
-        <button onclick="addCount()">Add Session</button>
-        <button onclick="resetCount()" style="background:#444; margin-top:10px;">Reset</button>
+<div class="container">
+    <h1>🔞 SINFUL DIARY</h1>
+    <div id="quote" style="color: #ffb3b3; font-style: italic;">"I want to feel every inch of you..."</div>
 
-        <hr style="margin: 20px 0; border: 0.5px solid #444;">
-
-        <div class="links">
-            <h3>🔥 Quick Links</h3>
-            <a href="https://your-private-google-drive-link.com" target="_blank">📸 Our Private Gallery</a>
-            <a href="https://www.google.com" target="_blank">🔞 Special Content (Search)</a>
-        </div>
+    <div class="stat-box">
+        <div class="counter-val" id="count">0</div>
+        <p style="letter-spacing: 5px; font-size: 12px; color: #ff9999;">ORGASMS SHARED</p>
+        <button class="main-btn" onclick="addCount()">I'M COMING! 💦</button>
     </div>
 
-    <script>
-        // Data Load kora
-        let count = localStorage.getItem('sexCount') || 0;
-        document.getElementById('countDisplay').innerText = count;
+    <div class="task-box">
+        🔥 TODAY'S DIRTY CHALLENGE:
+        <div id="task" style="font-size: 18px; color: #ffdd00; margin-top: 5px;">Loading your fantasy...</div>
+    </div>
 
-        function addCount() {
-            count++;
-            localStorage.setItem('sexCount', count);
-            document.getElementById('countDisplay').innerText = count;
-        }
+    <div class="slider-box">
+        <label>HOW HORNY ARE YOU? 🫦</label>
+        <input type="range" min="1" max="100" value="50" oninput="updateLevel(this.value)">
+        <p id="level-text">Level: Hot</p>
+    </div>
 
-        function resetCount() {
-            if(confirm("Are you sure?")) {
-                count = 0;
-                localStorage.setItem('sexCount', count);
-                document.getElementById('countDisplay').innerText = count;
-            }
+    <hr style="border: 0.1px solid #333;">
+
+    <div class="pos-card">
+        <span class="pos-title">DOGGY STYLE 🐕</span>
+        <span class="pos-desc">Primal and deep. Arch your back and let him take over.</span>
+        <img src="https://media.giphy.com/media/l2JhI0Y5N7Yf9hFm0/giphy.gif" alt="Doggy">
+    </div>
+
+    <div class="pos-card">
+        <span class="pos-title">DEEP THROAT / BJ 🫦</span>
+        <span class="pos-desc">Use your tongue and hands to make him beg.</span>
+        <img src="https://media.giphy.com/media/3o7TKVXv1O3f7f8X8A/giphy.gif" alt="BJ">
+    </div>
+
+    <div class="pos-card">
+        <span class="pos-title">REVERSE COWGIRL 🐎</span>
+        <span class="pos-desc">Ride him while looking away. Perfect view for him.</span>
+        <img src="https://media.giphy.com/media/3o6Zt8qGcADG97W48w/giphy.gif" alt="Cowgirl">
+    </div>
+
+    <div class="pos-card">
+        <span class="pos-title">ANAL EXPLORATION 🍑</span>
+        <span class="pos-desc">The ultimate stretch. Slow, wet, and intensely tight.</span>
+        <img src="https://img.freepik.com/free-vector/couple-body-silhouette-concept_23-2148508182.jpg" style="filter: invert(1) contrast(1.5);">
+    </div>
+
+    <a href="https://www.pornhub.com" target="_blank" class="hot-link">📽️ WATCH UNCUT 18+ VIDEOS</a>
+    <a href="https://www.redtube.com" target="_blank" class="hot-link">🔥 MORE HARDCORE ACTION</a>
+
+    <p style="font-size: 10px; color: #222; margin-top: 50px;" onclick="reset()">Burn the evidence</p>
+</div>
+
+<script>
+    const tasks = [
+        "No panties for the next 1 hour. 🫦",
+        "Give him a 5-minute slow BJ right now.",
+        "Blindfold her and use your tongue everywhere. 🔥",
+        "Record a 30-second moaning video together.",
+        "Try the Anal position for at least 10 minutes."
+    ];
+
+    let count = localStorage.getItem('hotCount') || 0;
+    document.getElementById('count').innerText = count;
+    document.getElementById('task').innerText = tasks[Math.floor(Math.random() * tasks.length)];
+
+    function addCount() {
+        count++;
+        localStorage.setItem('hotCount', count);
+        document.getElementById('count').innerText = count;
+        alert("UFF! That was so wet! 🥵💦");
+    }
+
+    function updateLevel(val) {
+        let txt = "Level: ";
+        if(val < 30) txt += "Warm 😊";
+        else if(val < 70) txt += "Hot! 🔥";
+        else txt += "BURNING WILD! 🥵💦";
+        document.getElementById('level-text').innerText = txt;
+    }
+
+    function reset() {
+        if(confirm("Delete all naughty records?")) {
+            localStorage.clear();
+            location.reload();
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
+
